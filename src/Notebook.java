@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class Notebook {
     private ArrayList<String> book;
     private String[] actionNotebook;
+    Scanner scanNotebook = new Scanner(System.in);
 
     public Notebook() {
         book = new ArrayList<>();
@@ -28,32 +29,32 @@ public class Notebook {
     }
 
     public void writerBook(int slot) {
-        if ((slot > (getSlotActionNotebook() - 1) || slot < (getSlotActionNotebook() - getSlotActionNotebook()))){
+        if ((slot > (getSlotActionNotebook() - 1) || slot < (getSlotActionNotebook() - getSlotActionNotebook()))) {
             System.out.println("Введите число от 0 до " + (getSlotActionNotebook() - 1));
-        }else {
+        } else {
             switch (slot) {
-                case (1) -> {
+                case 1:
                     System.out.println("Введите задачу для планирования:");
-                    Scanner inputPlan = new Scanner(System.in);
-                    String input = inputPlan.nextLine();
+                    String input = scanNotebook.nextLine();
                     book.add(input);
-                }
-                case (2) -> {
+                    break;
+
+                case 2:
                     System.out.println("Список задач:");
                     for (int i = 0; i < book.size(); i++) {
                         System.out.println((i + 1) + ". " + book.get(i));
                     }
                     System.out.println("\n");
-                }
-                case (3) -> {
+                    break;
+
+                case 3:
                     System.out.println("Введите номер задания которое хотите удалить:");
-                    Scanner inputRemove = new Scanner(System.in);
-                    int remove = inputRemove.nextInt();
+                    int remove = scanNotebook.nextInt();
                     if (remove < book.size() || remove > 0) {
                         book.remove(remove - 1);
                         System.out.println("Задание удалено" + "\n");
                     }
-                }
+                    break;
             }
         }
     }
